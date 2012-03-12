@@ -10,11 +10,11 @@ $('#how-to-use-title').click(function() {
 
 $("#search-box").keyup(function(event){
 
-	    if(event.keyCode == 13){ //13 = carriage return
+	if(event.keyCode == 13){ //13 = carriage return
 
 	        $("#search").click();
 
-	    }
+	}
 
 	});
 
@@ -26,7 +26,11 @@ $("#search-box").keyup(function(event){
 
 		exp = /#([-A-Z0-9]*)/ig; //regex for hashtags
 
-		var tweet = url.replace(exp,'<a href="javascript:auto_search(\'#$1\')">#$1</a>'); //replace hashtags with hyperlinks for a search
+		var hash = url.replace(exp,'<a href="javascript:auto_search(\'#$1\')">#$1</a>'); //replace hashtags with hyperlinks for a search
+
+		exp = /@([-A-Z0-9_]*[^\.:;,])/ig
+
+		var tweet = url.replace(exp,'<a href="javascript:auto_search(\'@$1\')">@$1</a>'); 
 
 		return tweet 
 
